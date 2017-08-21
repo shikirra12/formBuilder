@@ -97,52 +97,46 @@ let formData = [
 
 // -------- Your Code Goes Below this Line --------
 
-
-// input.setAttribute("type", "text");
-// input.setAttribute("placeholder", "First Name");
-// input.setAttribute("id", "user-first-name");
-//
-// input.setAttribute("type", "text");
-// input.setAttribute("placeholder", "Last Name");
-// input.setAttribute("id", "user-last-name");
-//
-// input.setAttribute("type", "email");
-// input.setAttribute("placeholder", "Email");
-// input.setAttribute("id","user-email");
-//
-// input.setAttribute("type", "text");
-// input.setAttribute("placeholder", "Current Website");
-// input.setAttribute("id", "user-website");
-//
-// input.setAttribute("type", "select");
-// input.setAttribute("placeholder", "Select Language");
-// input.setAttribute("id", "user-language");
-//
-// input.setAttribute("type", "textarea");
-// input.setAttribute("placeholder", "Your Comment");
-// input.setAttribute("id", "user-comment");
-//
-// input.setAttribute("type", "tel");
-// input.setAttribute("placeholder", "Mobile Number");
-// input.setAttribute("id", "user-mobile");
-//
-// input.setAttribute("type", "tel");
-// input.setAttribute("placeholder", "Home Phone");
-// input.setAttribute("id", "user-phone");
-//
 // container.appendChild(input);
+let container = document.getElementById("fields")
 
 for (var i = 0; i < formData.length; i++) {
-  let container = document.getElementById("fields");
+  // let label = formData[i];
+
   let input = document.createElement("input");
+  // let select = document.createElement("select");
   console.log(formData[i].type);
-  if (formData[i].options.length >= 0){
-    input.setAttribute("type", "text")
+
+  if (formData[i].options.length == 0){
+    input.setAttribute("type", formData[i].type)
+    input.setAttribute("id", "text")
+    input.setAttribute("placeholder", formData[i].label)
     container.appendChild(input);
   } else {
+    let select = document.createElement("select");
+    select.setAttribute('id', 'select');
+    container.appendChild(select);
+    select = document.getElementById('select');
+
+    for (var j = 0; j < formData[i].options.length; j++) {
+      let option = document.createElement("option");
+      option.setAttribute("label", formData[i].options[j].label)
+      option.setAttribute("value", formData[i].options[j].value)
+      select.appendChild(option);
+
+    }
+    // select.setAttribute("options", formData[i].options[0].label)
+
 
   }
 }
+
+// for (var j = 0; j < formData[i]options.length; j++) {
+//   let options = document.createElement("options");
+//   option.setAttribute("label", formData[i].option[j].label)
+//   option.setAttribute("value", formData[i].option[j].value)
+// }
+// container.appendChild(options);
 
 
 // if statement with a select tag
